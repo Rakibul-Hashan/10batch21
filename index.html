@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2nd Year 1st Semester Final Revision Batch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Serif+Bengali:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #061a44;
+      --navy-2: #0b2d6e;
+      --green: #08733d;
+      --green-2: #0fa866;
+      --gold: #c7962d;
+      --yellow: #fff254;
+      --ink: #111827;
+      --muted: #667085;
+      --soft: #f6f8fb;
+      --line: #d9e0ea;
+      --white: #ffffff;
+      --danger: #c2410c;
+      --success: #047857;
+      --shadow: 0 24px 80px rgba(6, 26, 68, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(199,150,45,.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(8,115,61,.12), transparent 32%),
+        #ffffff;
+      color: var(--ink);
+      font-family: 'Noto Serif Bengali', Georgia, serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(217,224,234,.75);
+    }
+
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--navy), var(--green));
+      color: white;
+      box-shadow: 0 14px 36px rgba(6,26,68,.18);
+    }
+
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-primary { background: var(--green); color: #fff; box-shadow: 0 14px 34px rgba(8,115,61,.24); }
+    .btn-ghost { background: #eef4ff; color: var(--navy); }
+    .btn-navy { background: var(--navy-2); color: #fff; box-shadow: 0 14px 34px rgba(6,26,68,.22); }
+    .btn-light { background: #eef4ff; color: var(--navy); }
+
+    .hero { padding: 74px 0 42px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.07fr .93fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 13px;
+      border: 1px solid rgba(199,150,45,.5);
+      border-radius: 999px;
+      color: var(--navy);
+      background: rgba(255,255,255,.78);
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(6,26,68,.06);
+    }
+
+    h1 {
+      margin: 20px 0 14px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: .96;
+      letter-spacing: -.06em;
+      color: var(--navy);
+    }
+
+    .hero-lead {
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: #24324b;
+      margin: 0 0 22px;
+      max-width: 690px;
+      font-weight: 800;
+    }
+
+    .green-highlight {
+      display: inline;
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .meta-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 14px 42px rgba(6,26,68,.06);
+    }
+
+    .meta-card strong { display: block; color: var(--navy); font-size: 22px; line-height: 1.1; }
+    .meta-card span { color: var(--muted); font-size: 14px; }
+
+    .hero-card {
+      position: relative;
+      background: white;
+      border: 1px solid rgba(217,224,234,.95);
+      border-radius: 34px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .mini-poster {
+      background:
+        linear-gradient(180deg, rgba(6,26,68,.04), transparent),
+        #fff;
+      border: 1px solid #e4eaf3;
+      border-radius: 26px;
+      overflow: hidden;
+    }
+
+    .poster-head {
+      background: linear-gradient(135deg, var(--navy), var(--navy-2));
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .poster-head b { display: block; font-size: 30px; line-height: 1.05; letter-spacing: -.04em; }
+    .poster-head span { color: var(--yellow); font-weight: 900; }
+    .poster-body { padding: 18px; }
+
+    .poster-bangla {
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--green), #0b7a46);
+      color: white;
+      padding: 18px;
+      font-size: 24px;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.28;
+    }
+
+    .poster-table {
+      margin-top: 14px;
+      border: 1px solid #dbe4ef;
+      border-radius: 18px;
+      overflow: hidden;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+      font-size: 13px;
+    }
+
+    .poster-row {
+      display: grid;
+      grid-template-columns: 94px 1fr 70px;
+      border-bottom: 1px solid #e4eaf3;
+    }
+
+    .poster-row:last-child { border-bottom: 0; }
+    .poster-row > div { padding: 8px 10px; }
+    .poster-row.head { background: var(--navy); color: white; font-weight: 900; }
+    .poster-row.total { background: #edf4ff; font-weight: 900; color: var(--navy); }
+
+    section { padding: 44px 0; }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(32px, 4.6vw, 54px);
+      line-height: .98;
+      letter-spacing: -.06em;
+    }
+
+    .section-title p { margin: 0; color: var(--muted); max-width: 420px; }
+
+    .purchase-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .95fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 12px 36px rgba(6,26,68,.06);
+    }
+
+    .feature-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: #eefbf4;
+      color: var(--green);
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 { margin: 0 0 7px; color: var(--navy); font-size: 20px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* Animated payment card starts here */
+    .checkout {
+      background: #ffffff;
+      border-radius: 30px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 96px;
+      overflow: visible;
+      isolation: isolate;
+      border: 1px solid conic-gradient(from 0deg, var(--green), var(--gold), var(--navy-2), var(--green));
+    }
+
+
+
+
+    .checkout h2 { margin: 0 0 4px; color: var(--navy); font-size: 32px; line-height: 1.08; letter-spacing: -.035em; }
+    .checkout > p { margin: 0 0 14px; color: var(--muted); }
+
+    @keyframes rotateRing {
+      to { transform: rotate(360deg); }
+    }
+
+    .checkout-guide {
+      position: absolute;
+      right: calc(100% + 14px);
+      top: 96px;
+      width: 190px;
+      background: #fffdf2;
+      color: var(--navy);
+      border: 1px solid rgba(199,150,45,.48);
+      border-radius: 20px;
+      padding: 12px 13px;
+      box-shadow: 0 18px 44px rgba(6,26,68,.13);
+      font-weight: 900;
+      font-size: 14px;
+      line-height: 1.35;
+      animation: guideFloat 1.35s ease-in-out infinite alternate;
+    }
+
+    .checkout-guide::after {
+      content: '';
+      position: absolute;
+      right: -9px;
+      top: 28px;
+      width: 18px;
+      height: 18px;
+      background: #fffdf2;
+      border-top: 1px solid rgba(199,150,45,.48);
+      border-right: 1px solid rgba(199,150,45,.48);
+      transform: rotate(45deg);
+    }
+
+    .checkout-guide .hand { display: block; font-size: 34px; line-height: 1; margin-bottom: 5px; animation: handPoint 1s ease-in-out infinite; }
+
+    @keyframes guideFloat {
+      from { transform: translateX(0); }
+      to { transform: translateX(10px); }
+    }
+
+    @keyframes handPoint {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(7px); }
+    }
+
+    .student-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 14px 0 16px;
+    }
+
+    .step-pill {
+      background: #f3f7ff;
+      border: 1px solid #dce7fb;
+      border-radius: 16px;
+      padding: 10px 8px;
+      text-align: center;
+      color: var(--navy);
+      font-weight: 900;
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .step-pill b {
+      display: inline-grid;
+      place-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      margin-bottom: 5px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .price-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 12px;
+      align-items: center;
+      background: linear-gradient(135deg, #071c49, #0c347c);
+      color: white;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-box::after {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      right: -80px;
+      top: -90px;
+      background: rgba(255,255,255,.09);
+    }
+
+    .price-box .label { opacity: .84; font-size: 14px; font-weight: 700; }
+    .price-box .main { font-size: 38px; font-weight: 900; line-height: 1; font-family: 'Inter', 'Noto Serif Bengali', sans-serif; }
+    .price-box .badge { color: var(--yellow); font-weight: 900; border: 1px dashed rgba(255,255,255,.5); border-radius: 999px; padding: 7px 10px; z-index: 1; }
+
+    .auto-coupon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: #ecfdf3;
+      border: 1px solid #bae8cf;
+      color: var(--green);
+      border-radius: 18px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+      font-weight: 900;
+    }
+
+    .auto-coupon code {
+      color: var(--navy);
+      background: #fff;
+      border: 1px dashed rgba(8,115,61,.45);
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-weight: 900;
+    }
+
+    .form-group { margin: 14px 0; }
+    .form-group label { display: block; color: var(--navy); font-weight: 900; margin-bottom: 7px; }
+
+    .attention-input {
+      position: relative;
+      border-radius: 20px;
+      padding: 3px;
+      background: linear-gradient(90deg, var(--green), var(--gold), var(--navy-2), var(--green));
+      background-size: 300% 100%;
+      animation: movingBorder 1.75s linear infinite;
+      box-shadow: 0 0 0 6px rgba(8,115,61,.06), 0 12px 30px rgba(8,115,61,.12);
+    }
+
+    @keyframes movingBorder {
+      from { background-position: 0% 50%; }
+      to { background-position: 300% 50%; }
+    }
+
+    input {
+      width: 100%;
+      border: 0;
+      border-radius: 17px;
+      padding: 16px 15px;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+      font-size: 17px;
+      outline: none;
+      transition: box-shadow .2s ease, background .2s ease;
+      background: #fbfcff;
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    input:focus { box-shadow: inset 0 0 0 3px rgba(8,115,61,.15); background: white; }
+
+    .helper { color: var(--muted); font-size: 13px; margin-top: 9px; display: block; }
+    .helper.error { color: var(--danger); font-weight: 900; }
+    .helper.ok { color: var(--success); font-weight: 900; }
+
+    .summary {
+      background: #f8fafc;
+      border: 1px solid #e3e9f2;
+      border-radius: 20px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .summary-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      color: #344054;
+      padding: 7px 0;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+    }
+
+    .summary-line strong { color: var(--navy); }
+    .summary-line.total { border-top: 1px solid #dfe7f0; margin-top: 8px; padding-top: 14px; font-size: 19px; }
+    .summary-line.total strong:last-child { color: var(--green); font-size: 28px; }
+
+    .pay-helper {
+      text-align: center;
+      color: var(--danger);
+      font-weight: 900;
+      margin: 8px 0 10px;
+      animation: downBounce 1s ease-in-out infinite;
+    }
+
+    @keyframes downBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    .pay-btn {
+      width: 100%;
+      font-size: 18px;
+      padding: 17px 20px;
+      border-radius: 18px;
+      position: relative;
+      overflow: hidden;
+      animation: payPulse 1.35s ease-in-out infinite;
+    }
+
+    .pay-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 44px;
+      left: -70px;
+      transform: skewX(-22deg);
+      background: rgba(255,255,255,.34);
+      animation: shine 2.1s linear infinite;
+    }
+
+    @keyframes payPulse {
+      0%, 100% { box-shadow: 0 14px 34px rgba(6,26,68,.22); }
+      50% { box-shadow: 0 18px 48px rgba(8,115,61,.32), 0 0 0 7px rgba(8,115,61,.1); }
+    }
+
+    @keyframes shine {
+      to { left: calc(100% + 80px); }
+    }
+
+    .secure-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .demo-note {
+      background: #fff9e7;
+      border: 1px solid rgba(199,150,45,.35);
+      color: #694f0f;
+      border-radius: 18px;
+      padding: 13px 14px;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* Routine */
+    .routine-wrap {
+      background: linear-gradient(180deg, #f8fbff, #fff);
+      border-top: 1px solid #e6edf7;
+      border-bottom: 1px solid #e6edf7;
+    }
+
+    .routine-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .routine-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .routine-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 14px;
+      box-shadow: 0 10px 30px rgba(6,26,68,.05);
+    }
+
+    .routine-date {
+      color: var(--navy);
+      font-weight: 900;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+    }
+
+    .routine-topic strong { color: var(--navy); display: block; }
+    .routine-topic span { color: var(--muted); font-size: 14px; }
+
+    .tag {
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      background: #eef4ff;
+      color: var(--navy-2);
+      font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+
+    .daily-card, .routine-side {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .routine-side { position: sticky; top: 96px; }
+    .routine-side h3, .daily-card h3 { margin: 0 0 10px; color: var(--navy); font-size: 24px; }
+    .routine-side p, .daily-card p { margin: 0 0 14px; color: var(--muted); }
+
+    .mini-stat {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #d9e0ea;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+    }
+
+    .mini-stat:last-child { border-bottom: 0; }
+    .mini-stat strong { color: var(--green); }
+
+    .daily-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .daily-task {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      background: #fbfcff;
+      border: 1px solid #e4eaf3;
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .daily-task input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--green);
+      margin-top: 3px;
+      box-shadow: none;
+      padding: 0;
+    }
+
+    .daily-task strong { color: var(--navy); display: block; }
+    .daily-task span { color: var(--muted); font-size: 14px; }
+
+    .progress {
+      height: 12px;
+      background: #edf2f7;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .progress > div {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      transition: width .25s ease;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, var(--green), var(--navy));
+      color: white;
+      border-radius: 34px;
+      padding: 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-band h2 { margin: 0 0 5px; font-size: clamp(28px, 3.2vw, 44px); line-height: 1.05; letter-spacing: -.04em; }
+    .cta-band p { margin: 0; opacity: .86; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(7,18,43,.66);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .modal.show { display: flex; }
+
+    .modal-card {
+      width: min(520px, 100%);
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.25);
+      padding: 28px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: pop .28s ease-out both;
+    }
+
+    @keyframes pop { from { transform: scale(.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .success-icon {
+      width: 86px;
+      height: 86px;
+      border-radius: 999px;
+      margin: 4px auto 14px;
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 44px;
+      box-shadow: 0 18px 48px rgba(8,115,61,.25);
+    }
+
+    .modal-card h2 { color: var(--green); margin: 0 0 7px; font-family: 'Inter', 'Noto Serif Bengali', sans-serif; font-size: 34px; }
+    .modal-card p { color: #475467; margin: 0 0 18px; }
+
+    .receipt {
+      text-align: left;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 16px;
+      margin: 18px 0;
+      font-family: 'Inter', 'Noto Serif Bengali', sans-serif;
+    }
+
+    .receipt div { display: flex; justify-content: space-between; gap: 14px; padding: 7px 0; border-bottom: 1px dashed #d7dee9; }
+    .receipt div:last-child { border-bottom: 0; }
+    .receipt span:first-child { color: var(--muted); }
+    .receipt span:last-child { color: var(--navy); font-weight: 900; text-align: right; }
+
+    .confetti-piece {
+      position: fixed;
+      top: -12px;
+      width: 9px;
+      height: 16px;
+      border-radius: 2px;
+      z-index: 120;
+      pointer-events: none;
+      animation: fall 1.4s linear forwards;
+    }
+
+    @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+    .footer {
+      padding: 36px 0 92px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .mobile-sticky {
+      display: none;
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 50;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(6,26,68,.18);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mobile-sticky strong { color: var(--navy); display: block; line-height: 1; }
+    .mobile-sticky span { color: var(--green); font-weight: 900; font-family: 'Inter', sans-serif; }
+
+    @media (max-width: 1120px) {
+      .checkout-guide { display: none; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .purchase-grid, .routine-grid, .daily-grid { grid-template-columns: 1fr; }
+      .hero-card { max-width: 560px; margin: 0 auto; }
+      .checkout, .routine-side { position: static; }
+      .cta-band { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner { min-height: 64px; }
+      .brand span { display: none; }
+      .nav-actions .btn-ghost { display: none; }
+      .hero { padding-top: 44px; }
+      .meta-strip, .features, .student-steps { grid-template-columns: 1fr; }
+      .section-title { display: block; }
+      .section-title p { margin-top: 10px; }
+      .poster-row { grid-template-columns: 82px 1fr 54px; font-size: 11px; }
+      .routine-item { grid-template-columns: 1fr; }
+      .tag { width: max-content; }
+      .cta-band { border-radius: 24px; padding: 24px; }
+      .mobile-sticky { display: flex; }
+      .footer { padding-bottom: 114px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#top" aria-label="Final Revision Batch home">
+        <span class="brand-mark">🎓</span>
+        <span>Final Revision Batch</span>
+      </a>
+      <nav class="nav-actions">
+        <a class="btn btn-ghost" href="#routine">Routine</a>
+        <a class="btn btn-primary" href="#enroll">Enroll Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">📚 2nd Year 1st Semester</div>
+          <h1>Final Revision Batch</h1>
+          <p class="hero-lead">
+            আসন্ন <span class="green-highlight">২৪ জুলাই ২০২৬</span>, 2nd Year 1st Semester এর সেমিস্টার ফাইনাল পরীক্ষার জন্য সব সাবজেক্ট রিভিশন ও দ্রুত সময়ে প্রস্তুতি ব্যাচে ভর্তি চলছে!
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#enroll">ভর্তি হতে চাই</a>
+            <a class="btn btn-ghost" href="#routine">রুটিন দেখুন</a>
+          </div>
+
+          <div class="meta-strip" aria-label="Course highlights">
+            <div class="meta-card"><strong>8 Subjects</strong><span>সবগুলো সাবজেক্ট কভার</span></div>
+            <div class="meta-card"><strong>20 Credit</strong><span>পূর্ণ সেমিস্টার প্রস্তুতি</span></div>
+            <div class="meta-card"><strong>৳2400</strong><span>Coupon after discount</span></div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="mini-poster" aria-label="Poster preview">
+            <div class="poster-head">
+              <b>2nd Year 1st Semester</b>
+              <span>Final Revision Batch</span>
+            </div>
+            <div class="poster-body">
+              <div class="poster-bangla">এই সকল সাব্জেক্টের সকল প্রস্তুতি!</div>
+              <div class="poster-table">
+                <div class="poster-row head"><div>Code</div><div>Course Title</div><div>Credit</div></div>
+                <div class="poster-row"><div>MAT2131</div><div>Coordinate Geometry and Vector Analysis</div><div>3.0</div></div>
+                <div class="poster-row"><div>CHE2122</div><div>Chemistry</div><div>2.0</div></div>
+                <div class="poster-row"><div>CSE2133</div><div>Discrete Mathematics</div><div>3.0</div></div>
+                <div class="poster-row"><div>CSE2134</div><div>Computer Architecture and Organizations</div><div>3.0</div></div>
+                <div class="poster-row"><div>CSE2135</div><div>Data Structure</div><div>3.0</div></div>
+                <div class="poster-row"><div>CSE21P6</div><div>Data Structure Lab</div><div>1.5</div></div>
+                <div class="poster-row"><div>CSE2137</div><div>Object Oriented Programming</div><div>3.0</div></div>
+                <div class="poster-row"><div>CSE21P8</div><div>Object Oriented Programming - I Lab</div><div>1.5</div></div>
+                <div class="poster-row total"><div></div><div>Total Credit</div><div>20</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="enroll">
+      <div class="shell purchase-grid">
+        <div>
+          <div class="section-title">
+            <h2>এই সকল সাব্জেক্টের সকল প্রস্তুতি!</h2>
+            <p>পরীক্ষার আগে দ্রুত, ফোকাসড এবং ফলাফলভিত্তিক রিভিশন প্ল্যান।</p>
+          </div>
+          <div class="features">
+            <article class="feature">
+              <div class="feature-icon">🎯</div>
+              <h3>সিলেবাসভিত্তিক রিভিশন</h3>
+              <p>প্রতিটি সাবজেক্টের গুরুত্বপূর্ণ অধ্যায় ও পরীক্ষামুখী অংশ কভার করা হবে।</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon">📝</div>
+              <h3>Important Topic & Suggestion</h3>
+              <p>শেষ সময়ে কোন টপিকগুলোতে বেশি গুরুত্ব দিতে হবে তার পরিষ্কার গাইডলাইন।</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon">⏱️</div>
+              <h3>দ্রুত সময়ে প্রস্তুতি</h3>
+              <p>সেমিস্টার ফাইনালের আগে সময় বাঁচিয়ে structured revision experience.</p>
+            </article>
+            <article class="feature">
+              <div class="feature-icon">📈</div>
+              <h3>Exam-focused Practice</h3>
+              <p>ভালো করার জন্য short notes, practice direction এবং confidence-building plan.</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="checkout" aria-label="Purchase form">
+          <div class="checkout-guide" aria-hidden="true">
+            <span class="hand">👉</span>
+            এখানে শুধু নাম্বার দিন। তারপর নিচের Pay button চাপুন।
+          </div>
+
+          <h2>Enroll & Pay</h2>
+          <p>Students যেন confuse না হয়, তাই এখানে শুধু মোবাইল নাম্বার দিলেই checkout complete হবে।</p>
+
+          <div class="student-steps" aria-label="Payment steps">
+            <div class="step-pill"><b>1</b><br>Mobile Number</div>
+            <div class="step-pill"><b>2</b><br>Pay Button</div>
+            <div class="step-pill"><b>3</b><br>Success Message</div>
+          </div>
+
+          <div class="price-box">
+            <div>
+              <div class="label">Payable after coupon</div>
+              <div class="main" id="payableHero">৳2400</div>
+            </div>
+            <div class="badge">20% OFF</div>
+          </div>
+
+          <div class="auto-coupon">
+            <span>Coupon auto applied</span>
+            <code>FOKIR420</code>
+          </div>
+
+          <form id="purchaseForm" novalidate>
+            <div class="form-group">
+              <label for="phone">Mobile Number দিন</label>
+              <div class="attention-input">
+                <input id="phone" name="phone" inputmode="numeric" maxlength="11" placeholder="01XXXXXXXXX" autocomplete="tel" aria-describedby="phoneHelp" />
+              </div>
+              <span class="helper" id="phoneHelp">Example: 01712345678 — শুধু ১১ ডিজিট BD নাম্বার দিন।</span>
+            </div>
+
+            <div class="summary" aria-live="polite">
+              <div class="summary-line"><span>Regular Fee</span><strong>৳<span id="regularFee">3000</span></strong></div>
+              <div class="summary-line"><span>Coupon Discount</span><strong>-৳<span id="discountAmount">600</span></strong></div>
+              <div class="summary-line total"><span>Total Payable</span><strong>৳<span id="payableAmount">2400</span></strong></div>
+            </div>
+
+            <div class="pay-helper">👇 এখানে Pay করুন</div>
+            <button type="submit" class="btn btn-navy pay-btn" id="payButton">Pay Now & Enroll</button>
+            <div class="secure-note">🔒 <span>Demo checkout: number দিলে Pay click করলেই Successful payment দেখাবে।</span></div>
+            <div class="demo-note">Real payment নিতে চাইলে পরে bKash/Nagad/SSLCommerz gateway connect করবেন। Free confirmation এর জন্য success screen + receipt + WhatsApp/manual follow-up ব্যবহার করা যায়।</div>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section class="routine-wrap" id="routine">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Batch Routine</h2>
+          <p>২৪ জুলাই ২০২৬ ফাইনাল ধরে revision + mock plan সাজানো হয়েছে।</p>
+        </div>
+
+        <div class="routine-grid">
+          <div class="routine-list">
+            <div class="routine-item"><div class="routine-date">১ জুলাই</div><div class="routine-topic"><strong>MAT2131</strong><span>Coordinate Geometry and Vector Analysis — formula + problem revision</span></div><div class="tag">Foundation</div></div>
+            <div class="routine-item"><div class="routine-date">২ জুলাই</div><div class="routine-topic"><strong>CHE2122</strong><span>Chemistry — important theory + numerical practice</span></div><div class="tag">Foundation</div></div>
+            <div class="routine-item"><div class="routine-date">৩ জুলাই</div><div class="routine-topic"><strong>CSE2133</strong><span>Discrete Mathematics — logic, set, relation, graph basics</span></div><div class="tag">Core</div></div>
+            <div class="routine-item"><div class="routine-date">৪ জুলাই</div><div class="routine-topic"><strong>CSE2134</strong><span>Computer Architecture — CPU, memory, instruction, organization</span></div><div class="tag">Core</div></div>
+            <div class="routine-item"><div class="routine-date">৫-৭ জুলাই</div><div class="routine-topic"><strong>CSE2135</strong><span>Data Structure — array, stack, queue, linked list, tree, sorting</span></div><div class="tag">Deep Revision</div></div>
+            <div class="routine-item"><div class="routine-date">৮ জুলাই</div><div class="routine-topic"><strong>CSE21P6</strong><span>Data Structure Lab — coding pattern + practical viva direction</span></div><div class="tag">Lab</div></div>
+            <div class="routine-item"><div class="routine-date">৯-১১ জুলাই</div><div class="routine-topic"><strong>CSE2137</strong><span>Object Oriented Programming — class, object, inheritance, polymorphism</span></div><div class="tag">Deep Revision</div></div>
+            <div class="routine-item"><div class="routine-date">১২ জুলাই</div><div class="routine-topic"><strong>CSE21P8</strong><span>OOP-I Lab — coding practice + common lab tasks</span></div><div class="tag">Lab</div></div>
+            <div class="routine-item"><div class="routine-date">১৩-২০ জুলাই</div><div class="routine-topic"><strong>Subject-wise Revision</strong><span>Previous questions, short suggestions, important topics, daily quiz</span></div><div class="tag">Revision</div></div>
+            <div class="routine-item"><div class="routine-date">২১-২৩ জুলাই</div><div class="routine-topic"><strong>Mock + Final Preparation</strong><span>Model test, answer strategy, last-minute doubt solving</span></div><div class="tag">Final</div></div>
+          </div>
+
+          <aside class="routine-side">
+            <h3>Routine Summary</h3>
+            <p>এক নজরে পুরো batch plan.</p>
+            <div class="mini-stat"><span>Total Subjects</span><strong>8</strong></div>
+            <div class="mini-stat"><span>Total Credit</span><strong>20</strong></div>
+            <div class="mini-stat"><span>Revision Phase</span><strong>13-20 July</strong></div>
+            <div class="mini-stat"><span>Mock Phase</span><strong>21-23 July</strong></div>
+            <div class="mini-stat"><span>Final Exam</span><strong>24 July 2026</strong></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="daily">
+      <div class="shell">
+        <div class="section-title">
+          <h2>Daily Routine</h2>
+          <p>Students যেন daily progress track করতে পারে, তাই checklist local browser এ save হবে।</p>
+        </div>
+
+        <div class="daily-card">
+          <h3>Today’s Study Checklist</h3>
+          <p>প্রতিদিন শেষ করলে tick দিন — progress bar auto update হবে।</p>
+          <div class="daily-grid">
+            <label class="daily-task"><input type="checkbox" class="task-check" /><span><strong>10:00 AM - 12:00 PM</strong>Concept revision + short notes</span></label>
+            <label class="daily-task"><input type="checkbox" class="task-check" /><span><strong>03:00 PM - 05:00 PM</strong>Problem solving / coding practice</span></label>
+            <label class="daily-task"><input type="checkbox" class="task-check" /><span><strong>07:00 PM - 08:00 PM</strong>Daily quiz + previous question</span></label>
+            <label class="daily-task"><input type="checkbox" class="task-check" /><span><strong>09:00 PM - 10:00 PM</strong>Doubt list + next day preparation</span></label>
+          </div>
+          <div class="progress" aria-label="Daily progress"><div id="progressBar"></div></div>
+          <p id="progressText" style="margin-top:10px;font-weight:900;color:var(--green);">0% complete</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="shell">
+        <div class="cta-band">
+          <div>
+            <h2>পরিকল্পিত প্রস্তুতি, নিশ্চিত সফলতা!</h2>
+            <p>Final exam এর আগে সব সাবজেক্টের focused revision এক জায়গায়।</p>
+          </div>
+          <a class="btn btn-primary" href="#enroll">Enroll Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-sticky" aria-label="Mobile checkout shortcut">
+    <div><strong>Payable</strong><span>৳2400</span></div>
+    <a class="btn btn-primary" href="#enroll">Enroll</a>
+  </div>
+
+  <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="modal-card">
+      <div class="success-icon">✓</div>
+      <h2 id="successTitle">Successful payment</h2>
+      <p>আপনার ভর্তি প্রক্রিয়া সম্পন্ন হয়েছে। নিচের payment summary সংরক্ষণ করুন।</p>
+
+      <div class="receipt">
+        <div><span>Mobile</span><span id="receiptPhone">—</span></div>
+        <div><span>Coupon</span><span>FOKIR420</span></div>
+        <div><span>Paid Amount</span><span id="receiptAmount">৳2400</span></div>
+        <div><span>Transaction ID</span><span id="receiptTxn">—</span></div>
+      </div>
+
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn btn-primary" type="button" id="downloadReceipt">Download Receipt</button>
+        <button class="btn btn-light" type="button" id="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="shell">© 2026 Final Revision Batch. Demo payment experience for landing page prototype.</div>
+  </footer>
+
+  <script>
+    const FEE = 3000;
+    const DISCOUNT_RATE = 0.20;
+    const PAYABLE = FEE - Math.round(FEE * DISCOUNT_RATE);
+
+    const phone = document.getElementById('phone');
+    const phoneHelp = document.getElementById('phoneHelp');
+    const purchaseForm = document.getElementById('purchaseForm');
+    const payButton = document.getElementById('payButton');
+    const successModal = document.getElementById('successModal');
+    const closeModal = document.getElementById('closeModal');
+    const downloadReceipt = document.getElementById('downloadReceipt');
+    const receiptPhone = document.getElementById('receiptPhone');
+    const receiptAmount = document.getElementById('receiptAmount');
+    const receiptTxn = document.getElementById('receiptTxn');
+    const taskChecks = document.querySelectorAll('.task-check');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+
+    let latestTxn = '';
+
+    function formatBDT(amount) {
+      return '৳' + amount.toLocaleString('en-BD');
+    }
+
+    function validPhone(value) {
+      return /^01[3-9]\d{8}$/.test(value);
+    }
+
+    function validatePhone(showMessage = false) {
+      const value = phone.value.trim();
+      if (validPhone(value)) {
+        phoneHelp.textContent = 'নাম্বার ঠিক আছে ✅ এখন Pay Now & Enroll চাপুন।';
+        phoneHelp.className = 'helper ok';
+        return true;
+      }
+
+      if (showMessage || value.length >= 11) {
+        phoneHelp.textContent = 'সঠিক ১১ ডিজিট BD mobile number দিন। Example: 01712345678';
+        phoneHelp.className = 'helper error';
+      } else {
+        phoneHelp.textContent = 'Example: 01712345678 — শুধু ১১ ডিজিট BD নাম্বার দিন।';
+        phoneHelp.className = 'helper';
+      }
+      return false;
+    }
+
+    function createTxn() {
+      const now = Date.now().toString().slice(-7);
+      const rand = Math.floor(100 + Math.random() * 900);
+      return `FRB-${now}-${rand}`;
+    }
+
+    function showSuccess() {
+      latestTxn = createTxn();
+      receiptPhone.textContent = phone.value.trim();
+      receiptAmount.textContent = formatBDT(PAYABLE);
+      receiptTxn.textContent = latestTxn;
+      successModal.classList.add('show');
+      makeConfetti();
+    }
+
+    function makeConfetti() {
+      const colors = ['#061a44', '#08733d', '#c7962d', '#0fa866', '#fff254'];
+      for (let i = 0; i < 46; i++) {
+        const piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        piece.style.left = Math.random() * 100 + 'vw';
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = (Math.random() * .35) + 's';
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        document.body.appendChild(piece);
+        setTimeout(() => piece.remove(), 1700);
+      }
+    }
+
+    phone.addEventListener('input', () => {
+      phone.value = phone.value.replace(/\D/g, '').slice(0, 11);
+      validatePhone(false);
+    });
+
+    purchaseForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!validatePhone(true)) {
+        phone.focus();
+        return;
+      }
+
+      payButton.disabled = true;
+      payButton.textContent = 'Processing...';
+
+      setTimeout(() => {
+        payButton.disabled = false;
+        payButton.textContent = 'Pay Now & Enroll';
+        showSuccess();
+      }, 650);
+    });
+
+    closeModal.addEventListener('click', () => successModal.classList.remove('show'));
+    successModal.addEventListener('click', event => {
+      if (event.target === successModal) successModal.classList.remove('show');
+    });
+
+    downloadReceipt.addEventListener('click', () => {
+      const content = [
+        'Final Revision Batch Payment Receipt',
+        '------------------------------------',
+        'Course: 2nd Year 1st Semester Final Revision Batch',
+        `Mobile: ${phone.value.trim()}`,
+        'Coupon: FOKIR420',
+        `Paid Amount: ${formatBDT(PAYABLE)}`,
+        `Transaction ID: ${latestTxn}`,
+        'Status: Successful payment'
+      ].join('\n');
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `revision-batch-receipt-${latestTxn || 'demo'}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    function updateProgress() {
+      const total = taskChecks.length;
+      const done = [...taskChecks].filter(item => item.checked).length;
+      const percent = Math.round((done / total) * 100);
+      progressBar.style.width = percent + '%';
+      progressText.textContent = percent + '% complete';
+      localStorage.setItem('revisionBatchDailyChecks', JSON.stringify([...taskChecks].map(item => item.checked)));
+    }
+
+    const savedChecks = JSON.parse(localStorage.getItem('revisionBatchDailyChecks') || '[]');
+    taskChecks.forEach((item, index) => {
+      item.checked = Boolean(savedChecks[index]);
+      item.addEventListener('change', updateProgress);
+    });
+    updateProgress();
+  </script>
+</body>
+</html>
